@@ -39,8 +39,6 @@ export class RandomJokeComponent implements OnInit{
    }
 
   public getRandomJoke(){
-    console.log(this.randomJoke)
-    // Access the value of categoryForm
     const category = this.jokeForm.get('categoryForm')?.value ?? null;
     this.homeService.getRandomJoke(category).subscribe({
         next: (data: Joke) => {

@@ -1,1 +1,18 @@
-<p>search-text works!</p>
+<a [routerLink]="['/']" routerLinkActive="router-link-active" >Hide</a>
+<section>
+  <h2>Generate random joke of given category</h2>
+  <form id="search" [formGroup]="textForm" (ngSubmit)="search()">
+    <mat-form-field>
+      <mat-label>Search jokes matching text</mat-label>
+      <input matInput placeholder="Ex. jokes" value="jokes" formControlName="text">
+    </mat-form-field>
+    <button mat-flat-button type="submit">Search jokes</button>
+  </form>
+  <div>{{totalJokes}}</div>
+  <div>
+    @for (joke of arrayJokesValues; track $index) {
+      <p>{{joke}}</p>
+    }
+  </div>
+  <router-outlet></router-outlet>
+</section>

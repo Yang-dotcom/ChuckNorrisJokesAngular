@@ -1,6 +1,7 @@
+import { Joke } from "./joke";
 
 
 export interface ResultSearch {
   total: number;
-  result: string;
+  result: Joke[];
 }
