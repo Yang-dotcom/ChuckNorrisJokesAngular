@@ -1,0 +1,15 @@
+<a [routerLink]="['/']" routerLinkActive="router-link-active" >Hide</a>
+<section>
+  <h2>Generate random joke of given category</h2>
+  <form id="category" [formGroup]="jokeForm" (ngSubmit)="getRandomJoke()">
+    <select name = "category" formControlName="categoryForm">
+      <option value="" selected>Select a category</option>
+      @for (category of categoriesArray; track $index) {
+        <option value="{{category}}">{{category}}</option>
+      }
+    </select>
+    <button mat-flat-button type="submit">Generate Joke </button>
+  </form>
+  <span>{{randomJoke}}</span>
+  <router-outlet></router-outlet>
+</section>
