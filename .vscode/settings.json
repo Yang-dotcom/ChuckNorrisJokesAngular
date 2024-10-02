@@ -1,9 +1,10 @@
 {
     "cSpell.words": [
         "resultsearch",
-        "tailwindcss"
+        "tailwindcss",
+        "chucknorris"
     ],
     "files.associations": {
   "*.css": "tailwindcss"
-}
+},
 }

@@ -1,18 +1,55 @@
-<a [routerLink]="['/']" routerLinkActive="router-link-active" >Hide</a>
-<section>
-  <h2>Generate random joke of given category</h2>
-  <form id="search" [formGroup]="textForm" (ngSubmit)="search()">
-    <mat-form-field>
-      <mat-label>Search jokes matching text</mat-label>
-      <input matInput placeholder="Ex. jokes" value="jokes" formControlName="text">
-    </mat-form-field>
-    <button mat-flat-button type="submit">Search jokes</button>
-  </form>
-  <div>{{totalJokes}}</div>
-  <div>
-    @for (joke of arrayJokesValues; track $index) {
-      <p>{{joke}}</p>
-    }
-  </div>
-  <router-outlet></router-outlet>
-</section>
+
+
+    <!-- Form Section -->
+    <section class="bg-soft-orange rounded-lg p-8 text-center shadow-sm">
+      <h2 class="text-2xl font-medium text-dark-gray mb-4">Generate Random Joke by Text Search</h2>
+
+      <form id="search" [formGroup]="textForm" (ngSubmit)="search()" class="space-y-4">
+        <div>
+          <label for="searchText" class="block text-sm font-medium text-dark-gray">Search jokes matching text</label>
+          <input
+            matInput
+            id="searchText"
+            placeholder="Ex. jokes"
+            value="jokes"
+            formControlName="text"
+            class="w-full px-4 py-2 rounded-md border border-soft-gray bg-light-beige focus:outline-none focus:ring-2 focus:ring-soft-orange"
+          >
+        </div>
+
+        <button mat-flat-button type="submit" class="bg-muted-yellow hover:bg-soft-orange text-dark-gray py-3 px-6 rounded-md shadow-sm transition w-full">
+          Search Jokes
+        </button>
+      </form>
+
+      <div class="mt-6">
+        <p class="text-soft-gray">Total Jokes Found: <span class="font-semibold text-warm-brown">{{totalJokes}}</span></p>
+      </div>
+
+      <div class="mt-4 space-y-2">
+        @for (joke of paginatedJokes; track $index) {
+          <p class="bg-light-beige py-3 px-6 rounded-md shadow-sm border border-soft-orange text-warm-brown">
+            {{joke}}
+          </p>
+        }
+      </div>
+      <mat-paginator
+          [length]="totalJokes"
+          [pageSize]="pageSize"
+          [pageSizeOptions]="[3, 5, 10]"
+          (page)="onPageChange($event)">
+      </mat-paginator>
+    </section>
+
+    <!-- Links Section -->
+    <section class="flex justify-between">
+      <a routerLink="/random-joke" class="block bg-muted-yellow hover:bg-soft-orange text-dark-gray text-sm py-3 px-5 rounded-md shadow-sm transition">
+        Go to Random Result
+      </a>
+      <a routerLink="/search-text" class="block bg-muted-yellow hover:bg-soft-orange text-dark-gray text-sm py-3 px-5 rounded-md shadow-sm transition">
+        Go to Search Results
+      </a>
+    </section>
+
+    <!-- Router Outlet -->
+    <router-outlet></router-outlet>

@@ -1,15 +1,46 @@
-<a [routerLink]="['/']" routerLinkActive="router-link-active" >Hide</a>
-<section>
-  <h2>Generate random joke of given category</h2>
-  <form id="category" [formGroup]="jokeForm" (ngSubmit)="getRandomJoke()">
-    <select name = "category" formControlName="categoryForm">
-      <option value="" selected>Select a category</option>
-      @for (category of categoriesArray; track $index) {
-        <option value="{{category}}">{{category}}</option>
-      }
-    </select>
-    <button mat-flat-button type="submit">Generate Joke </button>
-  </form>
-  <span>{{randomJoke}}</span>
-  <router-outlet></router-outlet>
-</section>
+
+  <!-- Header -->
+  <header class="py-6 text-center">
+    <p class="text-xl font-semibold text-warm-brown">Welcome to Chuck Norris' Best Jokes!</p>
+  </header>
+
+  <!-- Main content -->
+  <main class="max-w-2xl mx-auto p-4 space-y-8">
+
+    <!-- Form Section -->
+    <section class="bg-soft-orange rounded-lg p-8 text-center shadow-sm">
+      <h2 class="text-2xl font-medium text-dark-gray mb-4">Generate Random Joke of a Given Category</h2>
+
+      <form id="category" [formGroup]="jokeForm" (ngSubmit)="getRandomJoke()" class="space-y-4">
+        <select name="category" formControlName="categoryForm" class="w-full px-4 py-2 rounded-md border border-soft-gray bg-light-beige focus:outline-none focus:ring-2 focus:ring-soft-orange">
+          <option value="" selected>Select a category</option>
+          <!-- Assuming Angular for loop syntax -->
+          @for (category of categoriesArray; track $index) {
+            <option value="{{category}}">{{category}}</option>
+          }
+        </select>
+
+        <button mat-flat-button type="submit" class="bg-muted-yellow hover:bg-soft-orange text-dark-gray py-3 px-6 rounded-md shadow-sm transition w-full">
+          Generate Joke
+        </button>
+      </form>
+
+      <div class="mt-6">
+        <span class="block bg-light-beige py-3 px-6 rounded-md shadow-sm border border-soft-orange text-warm-brown text-lg">
+          {{randomJoke}}
+        </span>
+      </div>
+    </section>
+
+    <!-- Links Section -->
+    <section class="flex justify-between">
+      <a routerLink="" class="block bg-muted-yellow hover:bg-soft-orange text-dark-gray text-sm py-3 px-5 rounded-md shadow-sm transition">
+        Go Back
+      </a>
+      <a routerLink="/search-text" class="block bg-muted-yellow hover:bg-soft-orange text-dark-gray text-sm py-3 px-5 rounded-md shadow-sm transition">
+        Go to Search Results
+      </a>
+    </section>
+
+    <!-- Router Outlet -->
+    <router-outlet></router-outlet>
