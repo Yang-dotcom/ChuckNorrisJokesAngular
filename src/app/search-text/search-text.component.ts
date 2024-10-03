@@ -24,7 +24,7 @@ export class SearchTextComponent implements OnInit{
   arrayJokesValues: string[] = [];
   totalJokes: number = 0;
   paginatedJokes: any[] = []; // Jokes to display on the current page
-  pageSize: number = 5; // Number of jokes to display per page
+  pageSize: number = 3; // Number of jokes to display per page
   pageIndex: number = 0; // Current page index
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;

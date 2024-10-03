@@ -6,10 +6,21 @@
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <!-- Tailwind CSS CDN (You can also use a custom build) -->
+  <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Roboto:wght@300;400;500&display=swap');
+
+    /* Custom Tailwind configuration */
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(to right, #ffafbd, #ffc3a0, #ffec61, #f8ff9c);
+    }
+  </style>
 </head>
-<body class="mat-typography">
-  <app-root></app-root>
+<body class="bg-gradient-to-r from-pink-500 via-yellow-500 to-orange-500 text-gray-900">
+  <app-root class="min-h-screen w-full mx-auto"></app-root>
 </body>
 </html>
