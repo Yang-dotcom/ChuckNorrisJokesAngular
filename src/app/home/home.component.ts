@@ -1,5 +1,5 @@
 import { Component} from '@angular/core';
-import { RouterOutlet, RouterLink } from '@angular/router';
+import { RouterOutlet, RouterLink, Router, NavigationEnd } from '@angular/router';
 import { NgOptimizedImage } from '@angular/common';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 
@@ -29,7 +29,17 @@ export class HomeComponent {
   explosionNorris = "explosion-norris.jpg"
   showExplosion: boolean = false;
   showExplodingNorris: boolean = false;
+  showRouterOutlet: boolean = false;
 
+  constructor(private router: Router) {
+    // Listen for route changes
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        // Hide the router-outlet when the path is not "" (e.g., "/random-joke", "/search-text")
+        this.showRouterOutlet = event.urlAfterRedirects !== '/';
+      }
+    });
+  }
 
   toggleImage() {
     this.showExplosion = true;

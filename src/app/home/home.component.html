@@ -23,8 +23,8 @@
   <!-- Main content -->
   <main class="flex-grow max-w-8xl mx-auto md:p-4 space-y-8 flex flex-col md:flex-row md:space-x-20 justify-center sm:pt-0">
     <!-- Hero Section -->
-    <section class="hero bg-gradient-to-r from-pink-500 via-yellow-500 to-orange-500 rounded-lg p-6 text-center shadow-lg w-full md:w-2/5">
-      <div class="w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl mx-auto">
+    <section  class="hero bg-gradient-to-r from-pink-500 via-yellow-500 to-orange-500 rounded-lg p-6 text-center shadow-lg  md:w-3/5 lg:w-3/5">
+      <div [routerLink]="['/']" class="w-full max-w-lg sm:max-w-md md:max-w-lg lg:max-w-7xl mx-auto">
         <img [ngSrc]="chuckNorrisImage" alt="Chuck Norris Image" class="w-full h-auto object-contain rounded-lg border-4 border-red-600 drop-shadow-xl" width="600" height="400" priority />
       </div>
 
@@ -34,10 +34,12 @@
       </button>
     </section>
 
-    <!-- Router Outlet -->
-    <div class="rounded-lg max-w-full md:max-w-2xl w-full md:w-3/5 md:ml-10">
+    <!-- Router Outlet-->
+     @if(showRouterOutlet){
+      <div class="rounded-lg max-w-full md:max-w-2xl w-full md:w-3/5 md:ml-10">
       <router-outlet></router-outlet>
     </div>
+     }
   </main>
 
   <!-- First Image that appears with animation -->
