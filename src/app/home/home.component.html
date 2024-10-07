@@ -5,15 +5,15 @@
   <header class="bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 p-4 shadow-md">
     <nav class="flex flex-col sm:flex-row justify-between items-center container mx-auto">
       <div>
-        <p class="sm:text-lg md:text-2xl lg:text-3xlfont-extrabold text-warm-brown animate-pulse text-center sm:text-left">
+        <p class="sm:text-lg md:text-2xl lg:text-3xl font-extrabold text-warm-brown animate-pulse text-center sm:text-left">
           Welcome to Chuck Norris' Best Jokes! 🪐
         </p>
       </div>
-      <div class="space-x-0 sm:space-x-4 mt-2 sm:mt-0">
-        <a routerLink="/random-joke" class="sm:text-sn md:text-md lg:text-xl text-white hover:bg-yellow-500 hover:text-red-600 transition-all duration-300 px-4 py-2 rounded">
+      <div class="space-x-0 sm:space-x-4 mt-2 sm:mt-0 flex flex-col sm:flex-row">
+        <a routerLink="/random-joke" class="text-sm sm:text-md lg:text-xl text-white hover:bg-yellow-500 hover:text-red-600 transition-all duration-300 px-4 py-2 rounded mb-2 sm:mb-0">
           🃏 Random Joke
         </a>
-        <a routerLink="/search-text" class="sm:text-sm md:text-md lg:text-xl text-white hover:bg-yellow-500 hover:text-red-600 transition-all duration-300 px-4 py-2 rounded">
+        <a routerLink="/search-text" class="text-sm sm:text-md lg:text-xl text-white hover:bg-yellow-500 hover:text-red-600 transition-all duration-300 px-4 py-2 rounded">
           🔍 Search Jokes
         </a>
       </div>
@@ -21,46 +21,49 @@
   </header>
 
   <!-- Main content -->
-  <main class="flex-grow max-w-8xl mx-auto md:p-4 space-y-8 flex flex-col md:flex-row md:space-x-20 justify-center sm:pt-0">
+  <main class="flex-grow max-w-8xl mx-auto p-4 flex flex-col lg:flex-row lg:space-x-20 justify-center items-center">
     <!-- Hero Section -->
-    <section  class="hero bg-gradient-to-r from-pink-500 via-yellow-500 to-orange-500 rounded-lg p-6 text-center shadow-lg  md:w-3/5 lg:w-3/5">
-      <div [routerLink]="['/']" class="w-full max-w-lg sm:max-w-md md:max-w-lg lg:max-w-7xl mx-auto">
+    <section class="hero bg-gradient-to-r from-pink-500 via-yellow-500 to-orange-500 rounded-lg p-6 text-center shadow-lg w-full lg:w-3/5 lg:mb-10">
+      <div [routerLink]="['/']" class="w-full max-w-lg mx-auto">
         <img [ngSrc]="chuckNorrisImage" alt="Chuck Norris Image" class="w-full h-auto object-contain rounded-lg border-4 border-red-600 drop-shadow-xl" width="600" height="400" priority />
       </div>
-
-      <button class="p-5 font-extrabold text-2xl sm:text-3xl lg:text-4xl text-white bg-pink-600 rounded-xl mt-5 animate-bounce" (click)="toggleImage()">
+      <button class="p-5 font-extrabold text-lg sm:text-2xl lg:text-4xl text-white bg-pink-600 rounded-xl mt-5 animate-bounce" (click)="toggleImage()">
         I'm CHUCK NORRIS BABY!
         /̵͇̿̿/'̿'̿ ̿ ̿̿ ̿̿ ̿̿💥💥
       </button>
     </section>
 
-    <!-- Router Outlet-->
-     @if(showRouterOutlet){
-      <div class="rounded-lg max-w-full md:max-w-2xl w-full md:w-3/5 md:ml-10">
-      <router-outlet></router-outlet>
-    </div>
-     }
+    <!-- Router Outlet -->
+    @if (showRouterOutlet) {
+      <section class="w-full lg:w-3/5 lg:mt-10">
+        <div class="rounded-lg">
+          <router-outlet></router-outlet>
+        </div>
+      </section>
+    }
   </main>
 
-  <!-- First Image that appears with animation -->
-  @if (showExplosion) {
-    <div @pingAnimation (@pingAnimation.done)="onFirstAnimationEnd()" class="fixed top-0 left-0 w-screen h-screen z-50">
-      <img [ngSrc]="explosionImage" alt="Nuclear Exploding" class="w-full h-full object-cover" fill="" />
-    </div>
-  }
+<!-- First Image that appears with animation -->
+@if (showExplosion) {
+  <div @pingAnimation (@pingAnimation.done)="onFirstAnimationEnd()" class="fixed top-0 left-0 w-screen h-screen z-50">
+    <img [ngSrc]="explosionImage" alt="Nuclear Exploding" class="w-full h-full object-cover" fill="" />
+  </div>
+}
 
-  <!-- Second Image that appears after the first disappears -->
-  @if (showExplodingNorris) {
-    <div @pingAnimation (@pingAnimation.done)="onSecondAnimationEnd()" class="fixed top-0 left-0 w-screen h-screen z-50">
-      <img [ngSrc]="explosionNorris" alt="Chuck Exploding" class="w-full h-full object-cover" fill />
-    </div>
-  }
+<!-- Second Image that appears after the first disappears -->
+@if (showExplodingNorris) {
+  <div @pingAnimation (@pingAnimation.done)="onSecondAnimationEnd()" class="fixed top-0 left-0 w-screen h-screen z-50">
+    <img [ngSrc]="explosionNorris" alt="Chuck Exploding" class="w-full h-full object-cover" fill />
+  </div>
+}
+
+
 
   <!-- Footer -->
   <footer class="bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 p-1">
     <div class="text-center text-white">
       <p class="text-md sm:text-sm">&copy; 2024 Chuck Norris Jokes. All rights reserved.</p>
-      <p class="text-lg sm:lg">Join the fun and laugh with us!</p>
+      <p class="text-lg sm:text-lg">Join the fun and laugh with us!</p>
     </div>
   </footer>
 </div>

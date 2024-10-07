@@ -1,36 +1,34 @@
+<!-- Form Section -->
+<section class="bg-gradient-to-r from-pink-500 via-yellow-500 to-orange-500 rounded-lg p-8 text-center shadow-lg">
+  <h2 class="text-3xl font-bold text-white mb-6">Generate Random Joke of a Given Category</h2>
 
-    <!-- Form Section -->
-    <section class="bg-soft-orange rounded-lg p-8 text-center shadow-sm ">
-      <h2 class="text-2xl font-medium text-dark-gray mb-4">Generate Random Joke of a Given Category</h2>
+  <form id="category" [formGroup]="jokeForm" (ngSubmit)="getRandomJoke()" class="space-y-6">
+    <select name="category" formControlName="categoryForm" class="w-full px-4 py-3 rounded-md border-2 border-red-600 bg-light-beige text-gray-700 focus:outline-none focus:ring-4 focus:ring-yellow-500">
+      <option value="" selected>Select a category</option>
+      <!-- Assuming Angular for loop syntax -->
+      @for (category of categoriesArray; track $index) {
+        <option value="{{category}}">{{category}}</option>
+      }
+    </select>
 
-      <form id="category" [formGroup]="jokeForm" (ngSubmit)="getRandomJoke()" class="space-y-4">
-        <select name="category" formControlName="categoryForm" class="w-full px-4 py-2 rounded-md border border-soft-gray bg-light-beige focus:outline-none focus:ring-2 focus:ring-soft-orange">
-          <option value="" selected>Select a category</option>
-          <!-- Assuming Angular for loop syntax -->
-          @for (category of categoriesArray; track $index) {
-            <option value="{{category}}">{{category}}</option>
-          }
-        </select>
+    <button type="submit" class="text-white bg-pink-600 rounded-xl mt-5 animate-bounce hover:bg-red-600 text-lg font-semibold py-3 px-6 shadow-md transition-all duration-300 w-full">
+      Generate Joke
+    </button>
+  </form>
 
-        <button mat-flat-button type="submit" class="bg-muted-yellow hover:bg-soft-orange text-dark-gray py-3 px-6 rounded-md shadow-sm transition w-full">
-          Generate Joke
-        </button>
-      </form>
+  <div class="mt-8 max-w-md mx-auto bg-orange-100 py-4 px-6 rounded-lg shadow-md border-l-4 border-red-600 text-gray-800 text-lg h-32 lg:h-40 overflow-hidden text-ellipsis">
+    <span class="block w-full h-full overflow-x-auto">
+      {{randomJoke}}
+    </span>
+  </div>
+</section>
 
-      <div class="mt-6">
-        <span class="block bg-light-beige py-3 px-6 rounded-md shadow-sm border border-soft-orange text-warm-brown text-lg">
-          {{randomJoke}}
-        </span>
-      </div>
-    </section>
-
-    <!-- Links Section -->
-    <section class="flex justify-between">
-      <a routerLink="" class="block bg-muted-yellow hover:bg-soft-orange text-dark-gray text-sm py-3 px-5 rounded-md shadow-sm transition">
-        Go Back
-      </a>
-      <a routerLink="/search-text" class="block bg-muted-yellow hover:bg-soft-orange text-dark-gray text-sm py-3 px-5 rounded-md shadow-sm transition">
-        Go to Search Results
-      </a>
-    </section>
-
+<!-- Links Section -->
+<section class="flex justify-between mt-8 space-x-4">
+  <a routerLink="" class="block bg-yellow-500 hover:bg-red-600 text-white text-lg py-3 px-5 rounded-lg shadow-md transition-all duration-300">
+    ⬅️ Go Back
+  </a>
+  <a routerLink="/search-text" class="block bg-yellow-500 hover:bg-red-600 text-white text-lg py-3 px-5 rounded-lg shadow-md transition-all duration-300">
+    🔍 Go to Search Results
+  </a>
+</section>
